@@ -30,7 +30,7 @@ class CompaniesController extends Controller
 	
 		if($logo = $request->file('logo'))
 		{
-			$destinationPath = 'public/company/logos/';
+			$destinationPath = 'public/';
 			$logoImage = date('YmdHis') . "." . $logo->getClientOriginalExtension();
 			$request->file('logo')->storeAs($destinationPath, $logoImage);
 			$validatedData['logo']  =  $logoImage;
@@ -59,15 +59,14 @@ class CompaniesController extends Controller
 		
 		if($logo = $request->file('logo'))
 		{
-			
-			$destinationPath = 'public/company/logos/';
+			$destinationPath = 'public/';
 			$logoImage = date('YmdHis') . "." . $logo->getClientOriginalExtension();
 			$request->file('logo')->storeAs($destinationPath, $logoImage);
 			$validatedData['logo']  =  $logoImage;
 			//Unlink exiting logo;
 		}
-	   
-	    $company->update($validatedData);
+		
+		$company->update($validatedData);
         return redirect()->route('companies.index')->with('success',trans('Company have been updated successfully.'));
     }
 	

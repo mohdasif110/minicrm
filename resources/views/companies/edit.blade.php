@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Edit Company info') }}</div>
 				<div class="card-body">
-				    @if ($errors->any())
+		 @if ($errors->any())
 
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -67,14 +67,7 @@
 			<div class="form-group mb-2">
                 <label>{{ __('Logo') }}</label>               
 				<input type="file" name="logo" id="logo" class="form-control @error('logo') is-invalid @enderror" value="{{ $company->logo }}" placeholder="image">
-				
-				{{ asset('storage/app/public/company/logos/'.$company->logo) }}
-				
-				
-				
-				
-				<img src="{{ asset('storage/app/public/company/logos/'.$company->logo) }}" alt="" title="">
-				
+				<img src="{{URL::asset('storage/'.$company->logo)}}" style="width: 18px;" />
 				@error('logo')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
